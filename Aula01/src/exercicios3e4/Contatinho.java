@@ -41,8 +41,9 @@ public class Contatinho {
 		this.categoria = categoria;
 	}
 	
+	@Override
 	public String toString() {
-		return nome + "#" + email + "#" + telefone + "#" + categoria;
+		return nome + "#" + email + "#" + telefone + "#" + categoria + "\n";
 	}
 
 }
