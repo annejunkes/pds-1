@@ -7,6 +7,15 @@ public class Contatinho {
 	private String telefone;
 	private String categoria;
 	
+	public Contatinho(String nome1, String email1, String telefone1, String categoria1) {//metodo para acessar os atributos da classe
+		
+		this.nome=nome1;
+		this.email=email1;
+		this.telefone=telefone1;
+		this.categoria=categoria1;
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -30,6 +39,10 @@ public class Contatinho {
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	public String toString() {
+		return nome + "#" + email + "#" + telefone + "#" + categoria;
 	}
 
 }

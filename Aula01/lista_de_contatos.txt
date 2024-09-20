@@ -1,27 +1,2 @@
-Nome: c
-Email: c
-Telefone: c
-Categoria: c
-Nome: d
-Email: d
-Telefone: d
-Categoria: d
-Nome: a
-Email: a
-Telefone: a
-Categoria: a
-Nome: d
-Email: d
-Telefone: d
-Categoria: d
 
-Nome: al
-Email: bal
-Telefone: lo
-Categoria: ka
-
-Nome: el
-Email: po
-Telefone: la
-Categoria: fr
 

@@ -1,5 +1,6 @@
 package exercicios1e2;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,16 +16,19 @@ public class Ex1 {
 		
 		File tabuada = new File("tabuada_" + numero + ".txt");
 		
-		FileWriter fw = new FileWriter(tabuada);
+		try(BufferedWriter writer = new BufferedWriter(new FileWriter(tabuada))){
 		
 
 		for(int i=0; i<10; i++) {
 			
-			fw.write(numero + " x " + (i+1) + " = " + (numero*(i+1))+ "\n");
+			writer.write(numero + " x " + (i+1) + " = " + (numero*(i+1))+ "\n");
+		}
+		}catch(IOException e) {
+			System.out.println("Erro");
+		}finally {
+			scan.close();
 		}
 		
-		fw.close();
-
 	}
 
 }

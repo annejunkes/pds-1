@@ -1,49 +1,49 @@
 package exercicios3e4;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Agenda {
 	
-	Scanner scan = new Scanner(System.in);
+	private List<Contatinho> contatinhos;
 	
-	//ArrayList<Contatinho>contatos = new ArrayList<>();
-
-	public static void main(String[] args) throws IOException {
-		Scanner scan = new Scanner(System.in);
+	public Agenda() {
 		
-		List<Contatinho>contatos = new ArrayList<Contatinho>();
-		int cont =0;
+		this.contatinhos=new ArrayList<>();
 		
-		System.out.println("Opções: (1)addContatinhos (2)ordenarLista (3)salvarLista (4)buscarContatinho\n"
-				+ "Digite uma opção: ");
-		int opcao = scan.nextInt();
-		
-		if(opcao==1) {
-		
-		addContatinhos(contatos,cont);
-		}
-		
-
-		
-		if(opcao==3) {
-		salvarLista(contatos);
-		}
-		
-		if(opcao==4) {
-			buscarContatinho(contatos);
-			}
-		
-
-
 	}
 	
-	public static void addContatinhos(List<Contatinho>contatos, int cont) {
+	public void addContatinho(Contatinho contato) {
+		contatinhos.add(contato);
+	}
+	
+	public void ordenarLista() {
+		Collections.sort(contatinhos, Comparator.comparing(Contatinho::getNome));
+	}
+	
+	public void salvarLista(String nomeArquivo) {
+		ordenarLista();
+		
+		try (BufferedWriter wr = new BufferedWriter(new FileWriter(nomeArquivo))) {
+			
+			for(Contatinho c: contatinhos) {
+				wr.write(c.toString()+"\n");
+			}
+			
+		}catch(Exception e) {
+			System.out.println("Erro ao salvar arquivo: " +e.getMessage());
+		}
+	}
+	
+	//public static void addContatinhos(ArrayList<Contatinho>contatos, int cont) {
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -98,7 +98,7 @@ public class Agenda {
 		
 		}
 	
-	public static void buscarContatinho(List<Contatinho>contatos) throws FileNotFoundException {
+	public static void buscarContatinho(ArrayList<Contatinho>contatos) throws FileNotFoundException {
 		//Scanner scan = new Scanner(System.in);
 
 		
@@ -106,20 +106,20 @@ public class Agenda {
 		
 		String linhas = new String();
 		
-		Scanner s = new Scanner(System.in);
-		Scanner scan = new Scanner(lista);
+		Scanner scan = new Scanner(System.in);
+		Scanner leArquivo = new Scanner(lista);
 		
 		System.out.println("Digite o nome do contato:");
-		String nome = s.nextLine();
+		String nome = scan.nextLine();
 		
-		scan.nextLine();
+		leArquivo.nextLine();
 		
-		while(scan.hasNext()) {
+		while(leArquivo.hasNext()) {
 			linhas = scan.nextLine();
 		}
 		
 		if(linhas.contains(nome)) {
-			System.out.println(linhas);
+			System.out.println(linhas.indexOf(nome));
 		}
 	}
 		
