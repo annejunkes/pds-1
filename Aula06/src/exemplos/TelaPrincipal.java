@@ -1,4 +1,4 @@
-package aula06;
+package exemplos;
 
 import java.awt.EventQueue;
 
@@ -92,7 +92,7 @@ public class TelaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nome = JOptionPane.showInputDialog(null, "Escreva o seu nome:", JOptionPane.QUESTION_MESSAGE);
 				
-				JOptionPane.showMessageDialog(btnTeste3, e);
+				JOptionPane.showMessageDialog(null,"Parabéns, " + nome + " você acertou!");
 			}
 			
 		});
