@@ -72,8 +72,6 @@ public class Temperatura extends JFrame {
 				try {
 				double farenheit = Double.parseDouble(textFieldTemperatura.getText());
 				
-				double c;
-				
 				Conversao conversao = new Conversao();
 				
 				conversao.calcularTemperatura(farenheit);
