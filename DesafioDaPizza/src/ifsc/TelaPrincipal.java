@@ -19,7 +19,12 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JLabel;
 
-public class TelaPincipal extends JFrame {
+public class TelaPrincipal extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Launch the application.
@@ -40,7 +45,7 @@ public class TelaPincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaPincipal() {
+	public TelaPrincipal() {
 		setTitle("Massas E Queijos");
 		getContentPane().setBackground(new Color(243, 240, 180));
 		setBounds(100, 100, 450, 380);
