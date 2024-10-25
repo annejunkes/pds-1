@@ -224,8 +224,28 @@ public class TelaDePedido extends JFrame {
 					valor = valor + 5;
 				}
 				
+				comboBox.getModel();
+				//comboBox.getComponents()
+				if(comboBox.equals("Tele Entrega (+ $10)")) {
+					valor = valor + 10;
+				}
+				
+				int borda=0;
+				if(rdbtnBorda.isSelected()) {
+					valor = valor + 2;
+					borda++;
+				}
+				if(rdbtnSemBorda.isSelected()) {
+					borda++;
+				}
+				if(borda>1) {
+					JOptionPane.showMessageDialog(null, "", "Apenas uma borda possível",JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
 				String resposta = lblMensagem.getText() + " $";
 				lblMensagem.setText(resposta + valor);
+				
 				
 				
 		
