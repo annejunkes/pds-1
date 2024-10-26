@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -24,6 +25,7 @@ public class TelaDePedido extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	ButtonGroup rdbuttons = new ButtonGroup();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -105,11 +107,13 @@ public class TelaDePedido extends JFrame {
 		rdbtnBorda.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnBorda.setBounds(6, 7, 116, 23);
 		panel_1.add(rdbtnBorda);
+		rdbuttons.add(rdbtnBorda);
 		
 		JRadioButton rdbtnSemBorda = new JRadioButton("Sem borda");
 		rdbtnSemBorda.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnSemBorda.setBounds(6, 33, 116, 23);
 		panel_1.add(rdbtnSemBorda);
+		rdbuttons.add(rdbtnSemBorda);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
@@ -164,10 +168,15 @@ public class TelaDePedido extends JFrame {
 		panel_4.setBounds(273, 161, 130, 30);
 		getContentPane().add(panel_4);
 		
-		JLabel lblMensagem = new JLabel("Valor a pagar:");
-		lblMensagem.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblMensagem.setBounds(10, 10, 130, 13);
-		panel_4.add(lblMensagem);
+		JLabel lblValor = new JLabel("");
+		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblValor.setBounds(77, 10, 53, 13);
+		panel_4.add(lblValor);
+		
+		JLabel lblText = new JLabel("Valor a pagar:");
+		lblText.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblText.setBounds(10, 10, 69, 13);
+		panel_4.add(lblText);
 		
 		JButton btnConcluir = new JButton("Concluir");
 		
@@ -224,31 +233,19 @@ public class TelaDePedido extends JFrame {
 					valor = valor + 5;
 				}
 				
-				comboBox.getModel();
-				//comboBox.getComponents()
-				if(comboBox.equals("Tele Entrega (+ $10)")) {
+				if(comboBox.getSelectedItem().equals("Tele Entrega (+ $10)")) {
 					valor = valor + 10;
 				}
 				
-				int borda=0;
 				if(rdbtnBorda.isSelected()) {
 					valor = valor + 2;
-					borda++;
 				}
-				if(rdbtnSemBorda.isSelected()) {
-					borda++;
-				}
-				if(borda>1) {
-					JOptionPane.showMessageDialog(null, "", "Apenas uma borda possível",JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
-				String resposta = lblMensagem.getText() + " $";
-				lblMensagem.setText(resposta + valor);
+
 				
 				
+				lblValor.setText("$" + valor);
 				
-		
+				
 				
 			}});
 		btnConcluir.setFont(new Font("Tahoma", Font.PLAIN, 10));
