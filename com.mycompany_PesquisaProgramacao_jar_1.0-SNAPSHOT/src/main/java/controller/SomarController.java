@@ -1,15 +1,10 @@
 package controller;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class SomarController {
 
@@ -39,9 +34,6 @@ public class SomarController {
 
     @FXML
     private TextField txtNumero2;
-    
-    @FXML
-    private Button btnTela2;
 
     @FXML
     void onClickBtnFechar(ActionEvent event) {
@@ -69,24 +61,6 @@ public class SomarController {
         }catch(NumberFormatException n){
             System.out.println("Número inválido");
         }
-    }
-    
-    @FXML
-    void onClickBtnTela2(ActionEvent event) throws IOException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Teste2.fxml"));
-        
-        Parent root = loader.load();
-        
-        Stage stage = new Stage();
-        
-        Tela2Controller t2c = loader.getController();
-        //t2c.setStage(stage);
-        
-        Scene cena = new Scene(root);
-        stage.setTitle("Pesquisa de Programação");
-        stage.setScene(cena);
-        stage.show();
-
     }
 
 }
