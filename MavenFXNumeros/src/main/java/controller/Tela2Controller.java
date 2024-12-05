@@ -1,67 +1,101 @@
 package controller;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class Tela2Controller {
 
+    String sistemaFav;
+    
     @FXML
-    private ButtonBar btnBarSO;
+    private Menu menuArquivo;
 
     @FXML
-    private Button btnLinux;
+    private Menu menuCalculadora;
 
     @FXML
-    private Button btnMac;
+    private MenuItem menuPesquisa;
 
     @FXML
-    private Button btnSubmeter;
+    private MenuItem menuSair;
 
     @FXML
-    private Button btnWindows;
+    private MenuItem menuSobre;
 
     @FXML
-    private CheckBox chckBoxGosta;
+    private MenuItem menuSomar;
+    
 
     @FXML
-    private CheckBox chckBoxPrograma;
+    void onClickBtnPesquisa(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PesquisaView.fxml"));    
+        Parent root = loader.load();
+        
+        Stage novaTela = new Stage();
+        
+        Scene scene = new Scene(root);
+        novaTela.setTitle("Pesquisa de Programção");
+        novaTela.setScene(scene);
+        novaTela.show();
 
-    @FXML
-    private Label lblNome;
-
-    @FXML
-    private Label lblPesquisa;
-
-    @FXML
-    private Label lblSO;
-
-    @FXML
-    private Label lblSO1;
-
-    @FXML
-    private ButtonBar rdBtnBarLinguagens;
-
-    @FXML
-    private RadioButton rdbtnC;
-
-    @FXML
-    private RadioButton rdbtnJava;
-
-    @FXML
-    private RadioButton rdbtnPython;
-
-    @FXML
-    private TextField txtNome;
-
-    @FXML
-    void onCilickBtnSubmeter(ActionEvent event) {
-        System.out.println("Resultado da pesquisa para " + txtNome.getText());
     }
 
+    @FXML
+    void onClickBtnSobre(ActionEvent event) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Sobre");
+        alerta.setHeaderText("Informações do sistema");
+        alerta.setContentText("Sisema desenvolvido na aula de pds");
+        alerta.showAndWait();
+    }
+
+    @FXML
+    void onClickBtnSomar(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SomarView.fxml"));    
+        Parent root = loader.load();
+        
+        Stage novaTela = new Stage();
+        
+        Scene scene = new Scene(root);
+        novaTela.setTitle("Soma de números");
+        novaTela.setScene(scene);
+        novaTela.show();
+
+    }
+
+    @FXML
+    void onCllickBtnSair(ActionEvent event) {
+        if(fecharSistema()){
+            System.exit(0);
+            
+        }
+        else{
+            event.consume();
+        }
+
+    }
+    
+    public boolean fecharSistema(){
+       Alert confirmar = new Alert(Alert.AlertType.CONFIRMATION);
+       confirmar.setTitle("Confirmação");
+       confirmar.setHeaderText("Deseja fechar a aplicação?");
+        confirmar.setContentText("Toas as mudanças não salvas serão perdidas");
+
+       return confirmar.showAndWait().filter(response -> response == ButtonType.OK).isPresent(); 
+    }
 }

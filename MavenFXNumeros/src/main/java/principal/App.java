@@ -19,12 +19,12 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
     
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SomarView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Tela2View.fxml"));
         
         Parent root = loader.load();
         
         Scene cena = new Scene(root);
-        stage.setTitle("Somador de números");
+        stage.setTitle("Pesquisa de Programação");
         stage.setScene(cena);
         stage.show();
     }

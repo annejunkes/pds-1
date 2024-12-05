@@ -1,9 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SomarController {
+public class SomarController implements Initializable{
+    
+    private Stage stageSomar;
 
     @FXML
     private Button btnFechar;
@@ -45,7 +50,13 @@ public class SomarController {
 
     @FXML
     void onClickBtnFechar(ActionEvent event) {
-        System.exit(0);
+        if(stageSomar != null){
+            stageSomar.close();
+        }
+    }
+    //método para atribuir um stage ao controller atual 
+    public void setStage(Stage stage){
+        this.stageSomar = stage;
     }
 
     @FXML
@@ -73,7 +84,7 @@ public class SomarController {
     
     @FXML
     void onClickBtnTela2(ActionEvent event) throws IOException {
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Teste2.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Tela2View.fxml"));
         
         Parent root = loader.load();
         
@@ -87,6 +98,11 @@ public class SomarController {
         stage.setScene(cena);
         stage.show();
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+       
     }
 
 }
