@@ -28,15 +28,16 @@
             <Label fx:id="lblSO1" layoutX="12.0" layoutY="148.0" prefHeight="17.0" prefWidth="204.0" text="Linguagem de Programação Favorita" />
             <ButtonBar fx:id="rdBtnBarLinguagens" layoutX="210.0" layoutY="136.0" prefHeight="40.0" prefWidth="200.0">
                <buttons>
-                  <RadioButton fx:id="rdbtnJava" mnemonicParsing="false" text="Java" />
-                  <RadioButton fx:id="rdbtnPython" mnemonicParsing="false" text="Python" />
-                  <RadioButton fx:id="rdbtnC" mnemonicParsing="false" text="C" />
+                  <RadioButton fx:id="rdbtnJava" mnemonicParsing="false" onAction="#onClickRdBtnJava" text="Java" />
+                  <RadioButton fx:id="rdbtnPython" mnemonicParsing="false" onAction="#onClickRdBtnPython" text="Python" />
+                  <RadioButton fx:id="rdbtnC" mnemonicParsing="false" onAction="#onClickRdBtnC" text="C" />
                </buttons>
             </ButtonBar>
             <CheckBox fx:id="chckBoxGosta" layoutX="19.0" layoutY="219.0" mnemonicParsing="false" text="Gosta de programação" />
             <CheckBox fx:id="chckBoxPrograma" layoutX="19.0" layoutY="248.0" mnemonicParsing="false" text="Programa todo dia" />
             <Label layoutX="14.0" layoutY="189.0" text="Selecione as afirmativas qu se identifica:" />
             <Button fx:id="btnSubmeter" layoutX="250.0" layoutY="269.0" mnemonicParsing="false" onAction="#onCilickBtnSubmeter" text="Submeter" />
+            <Button fx:id="btnFechar" layoutX="475.0" layoutY="269.0" mnemonicParsing="false" onAction="#onClickBtnFechar" text="Fechar" />
          </children>
       </Pane>
    </children>

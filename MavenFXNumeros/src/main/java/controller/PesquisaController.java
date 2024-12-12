@@ -9,16 +9,26 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 public class PesquisaController {
 
-    String sistemaFav;
+    private Stage stagePesquisa;  
+    RadioButton botaoLinguagensSelecionado;  
+    ToggleGroup  tgLinguagens = new ToggleGroup();
+    ToggleButton tgSOSelecionado;
+    ToggleGroup tgSO = new ToggleGroup();
+    
     @FXML
     private ButtonBar btnBarSO;
 
     @FXML
     private Button btnSubmeter;
 
+    @FXML
+    private Button btnFechar;
+        
     @FXML
     private CheckBox chckBoxGosta;
 
@@ -61,12 +71,49 @@ public class PesquisaController {
     @FXML
     private TextField txtNome;
 
+    String sistemaFav;
+    String linguagemFav;
+    
     @FXML
     void onCilickBtnSubmeter(ActionEvent event) {
-        System.out.println("\nResultado da pesquisa para " + txtNome.getText());
-        System.out.println("Sistema Favorito: " + sistemaFav);
+        
+        if(!txtNome.getText().isEmpty()){
+        System.out.println("\n\nResultado da pesquisa para " + txtNome.getText());
+
+    }
+        botaoLinguagensSelecionado = (RadioButton)tgLinguagens.getSelectedToggle();
+        System.out.print("Linguagem Favorita: ");
+        if( botaoLinguagensSelecionado != null){
+            System.out.println( botaoLinguagensSelecionado.getText());
+        }else{
+            System.out.println("Nao selecionado");
+        }
+        
+        tgSOSelecionado = (ToggleButton)tgSO.getSelectedToggle();
+        System.out.print("SO Favorito: ");
+        if( tgSOSelecionado != null){
+            System.out.println( tgSOSelecionado.getText());
+        }else{
+            System.out.println("Nao selecionado");
+        }
+        
+        
+        System.out.print("\nPrograma todo dia? ");
+       // if(chckBoxPrograma.isSelected())
+        System.out.print(chckBoxPrograma.isSelected() == true ? "Sim\n" : "Não\n");
+        
+        System.out.print("\nGosta de programar? ");
+       // if(chckBoxPrograma.isSelected())
+        System.out.print(chckBoxGosta.isSelected() == true ? "Sim\n" : "Não\n");
     }
 
+    @FXML
+    void onClickBtnFechar(ActionEvent event) {
+        if(stagePesquisa != null){
+            stagePesquisa.close();
+        }
+    }
+    
     @FXML
     void onClickTbLinux(ActionEvent event) {
         sistemaFav = "Linux";
@@ -80,5 +127,31 @@ public class PesquisaController {
     @FXML
     void onClickTbMac(ActionEvent event) {
         sistemaFav = "Mac";
+    }
+    
+      @FXML
+    void onClickRdBtnC(ActionEvent event) {
+        linguagemFav = "C";
+    }
+
+    @FXML
+    void onClickRdBtnJava(ActionEvent event) {
+         linguagemFav = "Java";
+    }
+
+    @FXML
+    void onClickRdBtnPython(ActionEvent event) {
+        linguagemFav = "Python";
+    }
+
+    void setStage(Stage novaTela) {
+       this.stagePesquisa = novaTela;
+    }
+    
+    void ajustarElementosJanela(){
+        tgLinguagens.getToggles().addAll(rdbtnC, rdbtnJava, rdbtnPython);
+        //outra forma de setar
+ 
+        tgSO.getToggles().addAll(tbWindows, tbMac, tbLinux);
     }
 }

@@ -48,9 +48,15 @@ public class Tela2Controller {
         
         Stage novaTela = new Stage();
         
-        Scene scene = new Scene(root);
+        PesquisaController pc = loader.getController();
+        pc.setStage(novaTela);
+        
+        novaTela.setOnShown(evento -> {
+            pc.ajustarElementosJanela();
+        });
+
         novaTela.setTitle("Pesquisa de Programção");
-        novaTela.setScene(scene);
+        novaTela.setScene(new Scene(root));
         novaTela.show();
 
     }
@@ -71,9 +77,11 @@ public class Tela2Controller {
         
         Stage novaTela = new Stage();
         
-        Scene scene = new Scene(root);
+        SomarController sc = loader.getController();
+        sc.setStage(novaTela);
+        
         novaTela.setTitle("Soma de números");
-        novaTela.setScene(scene);
+        novaTela.setScene(new Scene(root));
         novaTela.show();
 
     }
