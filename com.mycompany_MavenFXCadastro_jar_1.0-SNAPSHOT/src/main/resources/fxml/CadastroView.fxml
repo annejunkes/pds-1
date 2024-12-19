@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
+   <children>
+      <GridPane layoutX="23.0" layoutY="28.0" prefHeight="38.0" prefWidth="260.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.199951171875" minWidth="10.0" prefWidth="98.39998779296874" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.79998779296875" minWidth="10.0" prefWidth="162.4000122070312" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="txtMatricula" prefHeight="26.0" prefWidth="203.0" GridPane.columnIndex="1" />
+            <Label text="Nº de matrícula:" />
+         </children>
+      </GridPane>
+      <ButtonBar fx:id="rdBtnBarCurso" layoutX="111.0" layoutY="90.0" prefHeight="40.0" prefWidth="417.0">
+         <buttons>
+            <RadioButton fx:id="rdBtnQuimica" mnemonicParsing="false" onAction="#onClickRdBtnQuimica" text="Química" />
+            <RadioButton fx:id="rdBtnInformatica" mnemonicParsing="false" onAction="#onClickRdBtnInformatica" text="Informática" />
+            <RadioButton fx:id="rdBtnModelagem" mnemonicParsing="false" onAction="#onClickRdBtnModelagem" text="Modelagem" />
+            <RadioButton fx:id="rdBtnADS" mnemonicParsing="false" onAction="#onClickRdBtnADS" prefHeight="18.0" prefWidth="112.0" text="ADS" />
+         </buttons>
+      </ButtonBar>
+      <Label layoutX="72.0" layoutY="101.0" prefHeight="18.0" prefWidth="38.0" text="Curso" />
+      <ButtonBar fx:id="btnBarSemestre" layoutX="127.0" layoutY="151.0" prefHeight="40.0" prefWidth="135.0">
+         <buttons>
+            <ToggleButton fx:id="semestre1" minWidth="62.0" mnemonicParsing="false" onAction="#onClickTb1" prefHeight="26.0" text="1º" />
+            <ToggleButton fx:id="semestre2" mnemonicParsing="false" onAction="#onClickTb2" text="2º" />
+            <ToggleButton fx:id="semestre3" mnemonicParsing="false" onAction="#onClickTb3" text="3º" />
+         </buttons>
+      </ButtonBar>
+      <Label layoutX="63.0" layoutY="162.0" prefHeight="18.0" prefWidth="56.0" text="Semestre" />
+      <GridPane layoutX="63.0" layoutY="221.0" prefHeight="83.0" prefWidth="206.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <CheckBox fx:id="checkBoxBolsista" mnemonicParsing="false" text="Bolsista de projeto" />
+            <CheckBox fx:id="checkBoxMonitoria" mnemonicParsing="false" text="Monitor(a)" GridPane.rowIndex="1" />
+            <CheckBox fx:id="checkBoxVoluntariado" mnemonicParsing="false" text="Voluntariado em projeto" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnSubmeter" layoutX="245.0" layoutY="342.0" mnemonicParsing="false" onAction="#onClickBtnSubmeter" prefHeight="26.0" prefWidth="75.0" text="Submeter" />
+      <Button fx:id="btnSair" layoutX="473.0" layoutY="342.0" mnemonicParsing="false" onAction="#onClickBtnSair" prefHeight="26.0" prefWidth="56.0" text="Sair" />
+   </children>
+</AnchorPane>
