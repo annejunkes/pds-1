@@ -1,11 +1,18 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class PrincipalController {
@@ -37,8 +44,27 @@ public class PrincipalController {
     private MenuItem menuSobre;
 
     @FXML
-    void menuCadastroUsuariosClick(ActionEvent event) {
+    void menuCadastroUsuariosClick(ActionEvent event) throws IOException {
+        URL url = new File("src/main/java/view/ListagemUsuarios.fxml").toURI().toURL();
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        Stage telaListagemUsuarios = new Stage();
+        PrincipalController luc = loader.getController();
 
+        luc.setStage(telaListagemUsuarios);
+
+        telaListagemUsuarios.setOnShown(evento -> {
+            //luc.ajustarElementosJanela(dados);
+        });
+
+        Scene scene = new Scene(root);
+        
+        Image icone = new Image(getClass().getResourceAsStream("/icones/loja.png"));
+       telaListagemUsuarios.getIcons().add(icone);
+
+       telaListagemUsuarios.setTitle("Tela principal do Sistema");
+       telaListagemUsuarios.setScene(scene);
+        telaListagemUsuarios.show();
     }
 
     @FXML

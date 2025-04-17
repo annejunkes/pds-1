@@ -1,38 +1,42 @@
 package model;
 
-public class Usuario {
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-	private long iduser;
-	private String nome;
-	private String fone;
-	private String login;
-	private String senha;
-	private String perfil;
+public class Usuario {
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty nome = new SimpleStringProperty();
+    private final StringProperty fone = new SimpleStringProperty();
+    private final StringProperty login = new SimpleStringProperty();
+    private final StringProperty senha = new SimpleStringProperty();
+    private final StringProperty perfil = new SimpleStringProperty();
 
 	// Método construtor com todos os parâmetros
-	public Usuario(Long id, String nome, String fone, String login, String senha, String perfil) {
-		this.iduser = id;
-		this.nome = nome;
-		this.fone = fone;
-		this.login = login;
-		this.senha = senha;
-		this.perfil = perfil;
+	public Usuario(int id, String nome, String fone, String login, String senha, String perfil) {
+		this.id.set(id);
+		this.nome.set(nome);
+		this.fone.set(fone);
+		this.login.set(login); 
+		this.senha.set(senha);
+		this.perfil.set(perfil);
 	}
 
 	// Método construtor com todos os parâmetros menos ID
 	public Usuario(String nome, String fone, String login, String senha, String perfil) {
-		this.nome = nome;
-		this.fone = fone;
-		this.login = login;
-		this.senha = senha;
-		this.perfil = perfil;
+		this.nome.set(nome);
+		this.fone.set(fone);
+		this.login.set(login); 
+		this.senha.set(senha);
+		this.perfil.set(perfil);
 	}
 
 	// Método construtor para o login
 	public Usuario(String login, String senha, String perfil) {
-		this.login = login;
-		this.senha = senha;
-		this.perfil = perfil;
+		this.login.set(login); 
+		this.senha.set(senha);
+		this.perfil.set(perfil);
 	}
 
 	// Método construtor sem parâmetros
@@ -40,22 +44,33 @@ public class Usuario {
 
 	}
 
-	public long getI() {
-		return iduser;
+	public IntegerProperty idProperty() {
+		return id;
+	}
+        
+        public long getId() {
+		return id.get();
+	}
+        
+	public void setId(int id) {
+		this.id.set(id);
 	}
 
-	public void setId(long l) {
-		this.iduser = l;
-	}
-
-	public String getNome() {
+        public StringProperty nomeProperty() {
 		return nome;
+	}
+	public String getNome() {
+		return nome.get();
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome.set(nome);
 	}
-
+        
+        public StringProperty foneProperty() {
+		return fone;
+	}
+        
 	public String getFone() {
 		return fone;
 	}
