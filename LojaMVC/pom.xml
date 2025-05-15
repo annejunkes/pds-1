@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>principal</groupId>
-    <artifactId>lojaMVC0304</artifactId>
+    <artifactId>lojaMVC1704</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,9 +26,9 @@
             <version>8.0.23</version>
         </dependency>
         <dependency>
-            <groupId>org.sellcom</groupId>
-            <artifactId>sellcom-javafx</artifactId>
-            <version>1.0.1</version>
+            <groupId>xyz.gianlu.librespot</groupId>
+            <artifactId>librespot-api-client</artifactId>
+            <version>0.6.2</version>
             <type>jar</type>
         </dependency>
     </dependencies>
@@ -91,5 +91,5 @@
             </plugin>
         </plugins>
     </build>
-    <name>lojaMVC0304</name>
+    <name>lojaMVC1704</name>
 </project>

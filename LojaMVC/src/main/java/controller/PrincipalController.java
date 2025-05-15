@@ -3,17 +3,23 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import util.AlertaUtil;
 
 public class PrincipalController {
 
@@ -48,28 +54,39 @@ public class PrincipalController {
         URL url = new File("src/main/java/view/ListagemUsuarios.fxml").toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
+        
         Stage telaListagemUsuarios = new Stage();
-        PrincipalController luc = loader.getController();
+        
+        ListagemUsuariosController luc = loader.getController();
 
         luc.setStage(telaListagemUsuarios);
 
         telaListagemUsuarios.setOnShown(evento -> {
-            //luc.ajustarElementosJanela(dados);
+            try {
+                luc.ajustarElementosJanela();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         Scene scene = new Scene(root);
         
-        Image icone = new Image(getClass().getResourceAsStream("/icones/loja.png"));
-       telaListagemUsuarios.getIcons().add(icone);
-
-       telaListagemUsuarios.setTitle("Tela principal do Sistema");
-       telaListagemUsuarios.setScene(scene);
+        telaListagemUsuarios.setTitle("Listagem de Usuários");
+        telaListagemUsuarios.setScene(scene);
         telaListagemUsuarios.show();
     }
 
     @FXML
     void menuFecharClick(ActionEvent event) {
-        System.exit(0);
+        Optional<ButtonType> resultado = AlertaUtil.mostrarConfirmacao("Atenção", "Tem certeza que deseja fechar a aplicação?");
+        if(resultado.isPresent()){
+            ButtonType botaoPressionado = resultado.get();
+            if(botaoPressionado == ButtonType.OK){
+                 System.exit(0);
+            }
+        }
+        
+       
     }
 
     void setStage(Stage telaPrincipal) {

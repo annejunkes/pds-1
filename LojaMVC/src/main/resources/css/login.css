@@ -1,19 +1,21 @@
+
 .root {
     -fx-background-image: url("/images/background.jpg");
 }
 
-.button{
+.button {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-pref-width: 150px;
     -fx-pref-height: 25px;
-    -fx-border-radius: 12px;
-    -fx-border-widt: 2px;
-    -fx-border-color: green;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-color: #66cdaa;
 }
 
-.button:hover{
-    -fx-border-color: white;
+.button:hover {
+    -fx-background-color: #45A049;
+    -fx-border-color: #FFFFFF;
 }

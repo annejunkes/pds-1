@@ -1,106 +1,154 @@
 package model;
 
+import java.io.Serializable;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Usuario {
-    private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty nome = new SimpleStringProperty();
-    private final StringProperty fone = new SimpleStringProperty();
-    private final StringProperty login = new SimpleStringProperty();
-    private final StringProperty senha = new SimpleStringProperty();
-    private final StringProperty perfil = new SimpleStringProperty();
+public class Usuario implements Serializable {
 
-	// Método construtor com todos os parâmetros
-	public Usuario(int id, String nome, String fone, String login, String senha, String perfil) {
-		this.id.set(id);
-		this.nome.set(nome);
-		this.fone.set(fone);
-		this.login.set(login); 
-		this.senha.set(senha);
-		this.perfil.set(perfil);
-	}
+    private int id;
+    private String nome;
+    private String fone;
+    private String login;
+    private String senha;
+    private String perfil;
 
-	// Método construtor com todos os parâmetros menos ID
-	public Usuario(String nome, String fone, String login, String senha, String perfil) {
-		this.nome.set(nome);
-		this.fone.set(fone);
-		this.login.set(login); 
-		this.senha.set(senha);
-		this.perfil.set(perfil);
-	}
+    // Método construtor com todos os parâmetros
+    public Usuario(int id, String nome, String fone, String login, String senha, String perfil) {
+        this.id = id;
+        this.nome = nome;
+        this.fone = fone;
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
 
-	// Método construtor para o login
-	public Usuario(String login, String senha, String perfil) {
-		this.login.set(login); 
-		this.senha.set(senha);
-		this.perfil.set(perfil);
-	}
+    // Método construtor com todos os parâmetros menos ID
+    public Usuario(String nome, String fone, String login, String senha, String perfil) {
+        this.nome = nome;
+        this.fone = fone;
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
 
-	// Método construtor sem parâmetros
-	public Usuario() {
+    // Método construtor para o login
+    public Usuario(String login, String senha, String perfil) {
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
+    // Método construtor para o login
+    public Usuario(int id) {
+        this.id=id;
+    }
 
-	}
+    public Usuario() {
 
-	public IntegerProperty idProperty() {
-		return id;
-	}
-        
-        public long getId() {
-		return id.get();
-	}
-        
-	public void setId(int id) {
-		this.id.set(id);
-	}
+    }
 
-        public StringProperty nomeProperty() {
-		return nome;
-	}
-	public String getNome() {
-		return nome.get();
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome.set(nome);
-	}
-        
-        public StringProperty foneProperty() {
-		return fone;
-	}
-        
-	public String getFone() {
-		return fone;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setFone(String fone) {
-		this.fone = fone;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getLogin() {
-		return login;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public String getFone() {
+        return fone;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setFone(String fone) {
+        this.fone = fone;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public String getLogin() {
+        return login;
+    }
 
-	public String getPerfil() {
-		return perfil;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
-	}
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    private transient IntegerProperty idProperty;
+
+    public IntegerProperty idProperty() {
+        if (idProperty == null) {
+            idProperty = new SimpleIntegerProperty(id);
+        }
+        return idProperty;
+    }
+
+    private transient StringProperty nomeProperty;
+
+    public StringProperty nomeProperty() {
+        if (nomeProperty == null) {
+            nomeProperty = new SimpleStringProperty(nome);
+        }
+        return nomeProperty;
+    }
+
+    private transient StringProperty foneProperty;
+
+    public StringProperty foneProperty() {
+        if (foneProperty == null) {
+            foneProperty = new SimpleStringProperty(fone);
+        }
+        return foneProperty;
+    }
+
+    private transient StringProperty loginProperty;
+
+    public StringProperty loginProperty() {
+        if (loginProperty == null) {
+            loginProperty = new SimpleStringProperty(login);
+        }
+        return loginProperty;
+    }
+
+    private transient StringProperty senhaProperty;
+
+    public StringProperty senhaProperty() {
+        if (senhaProperty == null) {
+            senhaProperty = new SimpleStringProperty(senha);
+        }
+        return senhaProperty;
+    }
+
+    private transient StringProperty perfilProperty;
+
+    public StringProperty perfilProperty() {
+        if (perfilProperty == null) {
+            perfilProperty = new SimpleStringProperty(perfil);
+        }
+        return perfilProperty;
+    }
 
 }

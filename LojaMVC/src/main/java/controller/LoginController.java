@@ -33,10 +33,13 @@ public class LoginController {
     private Usuario user;
 
     @FXML
-    private Button btnFechar;
+    private ImageView imgBancoOnline;
+    
+    @FXML
+    private Button bntFechar;
 
     @FXML
-    private Button btnLogar;
+    private Button bntLogar;
 
     @FXML
     private Label lblDB;
@@ -46,9 +49,6 @@ public class LoginController {
 
     @FXML
     private TextField txtUsuario;
-    
-    @FXML
-    private ImageView imgBancoOnline;
 
     @FXML
     void bntFecharClick(ActionEvent event) {
@@ -65,62 +65,59 @@ public class LoginController {
     }
 
     public void verificarBanco() {
-       /* this.conexao = ConexaoBD.conectar();
+//        this.conexao = ConexaoBD.conectar();
+//
+//        if (this.conexao != null) {
+//            System.out.println("Conectou no banco de dados");
+//        } else {
+//            System.out.println("Problemas na conexão com o banco de dados");
+//        }
+    
+//    if(dao.bancoOnline()){
+//        lblDB.setText("Banco de Dados: Online");
+//        lblDB.setStyle("-fx-text-fill: blue;");
+//    } else {
+//        lblDB.setText("Banco de Dados: Offline");
+//        lblDB.setStyle("-fx-text-fill: red;");
+//    }
 
-        if (this.conexao != null) {
-            System.out.println("Conectou no banco de dados");
-        } else {
-            System.out.println("Problemas na conexão com o banco de dados");
-        }*/
-       
-       //if(dao.bancoOnline()){
-         //  lblDB.setText("Banco de dados: Online");
-          // lblDB.setStyle("-fx-text-fill:blue;");
-      // }
-      // else{
-          // lblDB.setText("Banco de dados: Offline");
-          // lblDB.setStyle("-fx-text-fill:red;");
-       //}
-       
        if(dao.bancoOnline()){
            File arquivo = new File("src/main/resources/icones/dbok.png");
            Image imagem = new Image(arquivo.toURI().toString());
            imgBancoOnline.setImage(imagem);
-}
-           else{
+       } else {
            File arquivo = new File("src/main/resources/icones/dberror.png");
            Image imagem = new Image(arquivo.toURI().toString());
-           imgBancoOnline.setImage(imagem);   
-                   }
-  
+           imgBancoOnline.setImage(imagem);
+       }
 
     }
 
     public void abrirJanela() {
+        bntLogar.setDefaultButton(true);
         verificarBanco();
-        btnLogar.setDefaultButton(true);
     }
 
     public void processarLogin() throws IOException, SQLException {
         if (!dao.bancoOnline()) {
-            //System.out.println("Banco de dados desconectado!");
-             AlertaUtil.mostrarErro("Erro", "Banco de dados desconectado");
+            AlertaUtil.mostrarErro("Erro", "Banco de dados desconectado!");
         } else if (txtUsuario.getText() != null && !txtUsuario.getText().isEmpty() && txtSenha.getText() != null && !txtSenha.getText().isEmpty()) {
-            listaDados = autenticar(txtUsuario.getText(),txtSenha.getText());
+            listaDados = autenticar(txtUsuario.getText(),
+                    txtSenha.getText());
             if (listaDados != null) {
-               // System.out.println("Bem vindo "
-                       // + listaDados.get(0) + " acesso liberado!");
-                       AlertaUtil.mostrarInformacao("Informação", "Bem Vindo, " + listaDados.get(0)+ "\nAcesso liberado");
-                if (stageLogin != null) { 
+                AlertaUtil.mostrarInformacao("Informação", "Bem vindo "
+                        + listaDados.get(0) + " acesso liberado!" );
+                if (stageLogin != null) {
                     stageLogin.close();
                 }
                 abrirTelaPrincipal(listaDados);
             } else {
-               // System.out.println("Usuário e senha invalidos!");
-               AlertaUtil.mostrarErro("Erro", "Usuário e senha inválidos");
+//                System.out.println("Usuário e senha invalidos!");
+                  AlertaUtil.mostrarErro("Erro", "Usuário e senha inválidos!");
             }
         } else {
-            System.out.println("Verifique as informações!");
+//            System.out.println("Verifique as informações!");
+                AlertaUtil.mostrarErro("Erro", "Verifique as informações!");
         }
 
     }
