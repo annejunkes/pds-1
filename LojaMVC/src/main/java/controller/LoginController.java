@@ -19,6 +19,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.LoginDAO;
 import model.Usuario;
@@ -43,6 +44,7 @@ public class LoginController {
 
     @FXML
     private Label lblDB;
+    
 
     @FXML
     private PasswordField txtSenha;
@@ -59,6 +61,8 @@ public class LoginController {
     void bntLogarClick(ActionEvent event) throws IOException, SQLException {
         processarLogin();
     }
+    
+    
 
     public void setStage(Stage stage) {
         this.stageLogin = stage;

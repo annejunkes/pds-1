@@ -33,6 +33,9 @@ public class PrincipalController {
 
     @FXML
     private Menu menuCadastro;
+    
+    @FXML
+    private MenuItem menuCadastroClientes;
 
     @FXML
     private MenuItem menuCadastroUsuarios;
@@ -52,6 +55,33 @@ public class PrincipalController {
     @FXML
     void menuCadastroUsuariosClick(ActionEvent event) throws IOException {
         URL url = new File("src/main/java/view/ListagemUsuarios.fxml").toURI().toURL();
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        
+        Stage telaListagemUsuarios = new Stage();
+        
+        ListagemUsuariosController luc = loader.getController();
+
+        luc.setStage(telaListagemUsuarios);
+
+        telaListagemUsuarios.setOnShown(evento -> {
+            try {
+                luc.ajustarElementosJanela();
+            } catch (SQLException ex) {
+                Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        Scene scene = new Scene(root);
+        
+        telaListagemUsuarios.setTitle("Listagem de Usuários");
+        telaListagemUsuarios.setScene(scene);
+        telaListagemUsuarios.show();
+    }
+    
+    @FXML
+    void menuCadastroClientesClick(ActionEvent event) throws IOException {
+        URL url = new File("src/main/java/view/ListagemClientes.fxml").toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         

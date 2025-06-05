@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,13 +58,13 @@ public class ListagemUsuariosController {
             cadc.ajustarElementosJanela(null);
         });
         
-        cadc.setOnUsuarioSalvo(()-> {
-                    try{
-                        atualizarUsuariosTabela();
-                    }catch (SQLException ex){
-                        
-                    }
-                });
+        cadc.setOnUsuarioSalvo(() -> {
+            try{
+                carregarUsuariosTabela();
+            } catch (SQLException ex){
+                
+            }
+        });
 
         Scene scene = new Scene(root);
 
@@ -116,31 +117,38 @@ public class ListagemUsuariosController {
                     = new TableColumn<>("Perfil");
             colunaPerfil.setCellValueFactory(u
                     -> u.getValue().perfilProperty());
+            
+            TableColumn<Usuario, String> colunaEmail = new TableColumn<>("Email");
+            colunaEmail.setCellValueFactory(u -> u.getValue().emailProperty());
+            
+            TableColumn<Usuario, String> colunaDataNasc = new TableColumn<>("Data de nascimento");
+            colunaDataNasc.setCellValueFactory(u -> u.getValue().dataNascProperty());
 
             tabelaUsuarios.getColumns().addAll(colunaID,
                     colunaNome, colunaFone, colunaLogin,
-                    colunaPerfil);
+                    colunaPerfil, colunaEmail, colunaDataNasc);
+
+//            tabelaUsuarios.setItems(lista);
+            FilteredList<Usuario> listaFiltrada = new
+                FilteredList<>(lista, p -> true);
             
-            FilteredList<Usuario> listaFiltrada = new FilteredList<>(lista, p -> true);
-            
-            txtPesquisar.textProperty().addListener((obs, oldVal, newVal)-> {
-            listaFiltrada.setPredicate(usuario -> {
-                if(newVal==null || newVal.isEmpty()){
-                    return true;
-                }
-                String filtro = newVal.toLowerCase();
-                return usuario.getNome().toLowerCase().contains(filtro) 
-                        || usuario.getLogin().toLowerCase().contains(filtro)
-                        || usuario.getFone().toLowerCase().contains(filtro)
-                        || usuario.getPerfil().toLowerCase().contains(filtro);
+            txtPesquisar.textProperty().addListener((obs, oldVal, newVal) -> {
+                listaFiltrada.setPredicate(usuario -> {
+                    if(newVal == null || newVal.isEmpty()){
+                        return true;
+                    }
+                    String filtro = newVal.toLowerCase();
+                    return usuario.getNome().toLowerCase().contains(filtro)
+                            || usuario.getLogin().toLowerCase().contains(filtro)
+                            || usuario.getFone().toLowerCase().contains(filtro)
+                            || usuario.getPerfil().toLowerCase().contains(filtro);
+                });
             });
-        });
-            
-            SortedList<Usuario> listaOrdenada = new SortedList<>(listaFiltrada);
-            listaOrdenada.comparatorProperty().bind(tabelaUsuarios.comparatorProperty());
-            tabelaUsuarios.setItems(listaOrdenada);
-            
-        //    tabelaUsuarios.setItems(lista);
+                SortedList<Usuario> listaOrdenada = new SortedList<>(listaFiltrada);
+                listaOrdenada.comparatorProperty().
+                        bind(tabelaUsuarios.comparatorProperty());
+                tabelaUsuarios.setItems(listaOrdenada);
+
         } else {
             AlertaUtil.mostrarErro("Erro", "Erro ao carregar usuários");
         }
@@ -171,10 +179,10 @@ public class ListagemUsuariosController {
                     cadc.ajustarElementosJanela(this.usuario);
                 });
                 
-                cadc.setOnUsuarioSalvo(()-> {
+                cadc.setOnUsuarioSalvo(() -> {
                     try{
                         atualizarUsuariosTabela();
-                    }catch (SQLException ex){
+                    } catch (SQLException ex){
                         
                     }
                 });
@@ -190,7 +198,7 @@ public class ListagemUsuariosController {
     
     private void atualizarUsuariosTabela() throws SQLException{
         lista = FXCollections.observableArrayList(listarUsuarios());
-        tabelaUsuarios.setItems(lista); //vem do banco de dados
+        tabelaUsuarios.setItems(lista); //Vem do BD
     }
 
 }

@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,24 +16,30 @@ public class Usuario implements Serializable {
     private String login;
     private String senha;
     private String perfil;
+    private String email;
+    private LocalDate dataNasc;
 
     // Método construtor com todos os parâmetros
-    public Usuario(int id, String nome, String fone, String login, String senha, String perfil) {
+    public Usuario(int id, String nome, String fone, String login, String senha, String perfil, String email, LocalDate dataNasc) {
         this.id = id;
         this.nome = nome;
         this.fone = fone;
         this.login = login;
         this.senha = senha;
         this.perfil = perfil;
+        this.email = email;
+        this.dataNasc = dataNasc;
     }
 
     // Método construtor com todos os parâmetros menos ID
-    public Usuario(String nome, String fone, String login, String senha, String perfil) {
+    public Usuario(String nome, String fone, String login, String senha, String perfil, String email, LocalDate dataNasc) {
         this.nome = nome;
         this.fone = fone;
         this.login = login;
         this.senha = senha;
         this.perfil = perfil;
+        this.email = email;
+        this.dataNasc = dataNasc;
     }
 
     // Método construtor para o login
@@ -39,10 +47,6 @@ public class Usuario implements Serializable {
         this.login = login;
         this.senha = senha;
         this.perfil = perfil;
-    }
-    // Método construtor para o login
-    public Usuario(int id) {
-        this.id=id;
     }
 
     public Usuario() {
@@ -95,6 +99,22 @@ public class Usuario implements Serializable {
 
     public void setPerfil(String perfil) {
         this.perfil = perfil;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public LocalDate getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(LocalDate dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     private transient IntegerProperty idProperty;
@@ -150,5 +170,25 @@ public class Usuario implements Serializable {
         }
         return perfilProperty;
     }
+    
+    private transient StringProperty emailProperty;
+    
+     public StringProperty emailProperty() {
+        if (emailProperty == null) {
+            emailProperty = new SimpleStringProperty(email);
+        }
+        return emailProperty;
+    }
+     
+     private transient StringProperty dataNascProperty;
+    
+     public StringProperty dataNascProperty() {
+        if (dataNascProperty == null) {
+            dataNascProperty = new SimpleStringProperty(dataNasc.toString());
+        }
+        return dataNascProperty;
+    }
+     
+     
 
 }
