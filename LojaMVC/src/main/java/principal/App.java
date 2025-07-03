@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import model.Cliente;
+import model.ClienteDAO;
 
 public class App extends Application {
 
@@ -32,7 +36,25 @@ public class App extends Application {
         telaLogin.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        
+        /*ClienteDAO clienteDAO = new ClienteDAO();
+        
+        Cliente novoCliente = new Cliente();
+        
+        novoCliente.setNome("Anne");
+        novoCliente.setTelefone("11999171804");
+        novoCliente.setEndereco("Rua Otto Nuss, 125");
+        novoCliente.setDataNascimento(Date.valueOf("2006-05-27"));
+        
+        clienteDAO.inserirCliente(novoCliente);
+        
+        try{
+        clienteDAO.listarClientes();
+        }catch(SQLException e){
+            System.out.println("Não foi possível listar os clientes");
+        }*/
+        
         launch();
     }
 

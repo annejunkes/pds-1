@@ -10,6 +10,24 @@ public class Cliente {
     private String telefone;
     private String endereco;
     private Date dataNascimento;
+    
+    public Cliente(int id, String nome, String telefone, String endereco, Date dataNascimento){
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.dataNascimento = dataNascimento;
+    }
+    
+    public Cliente(String nome, String telefone, String endereco, Date dataNascimento){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.dataNascimento = dataNascimento;
+    }
+    
+    public Cliente(){
+    }
 
     public void setId(int id) {
         this.id = id;

@@ -81,29 +81,29 @@ public class PrincipalController {
     
     @FXML
     void menuCadastroClientesClick(ActionEvent event) throws IOException {
-        URL url = new File("src/main/java/view/ListagemClientes.fxml").toURI().toURL();
+        URL url = new File("src/main/java/view/ClienteView.fxml").toURI().toURL();
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         
-        Stage telaListagemUsuarios = new Stage();
+        Stage telaListagemClientes = new Stage();
         
-        ListagemUsuariosController luc = loader.getController();
+        ClienteController cc = loader.getController();
 
-        luc.setStage(telaListagemUsuarios);
+        cc.setStage(telaListagemClientes);
 
-        telaListagemUsuarios.setOnShown(evento -> {
-            try {
-                luc.ajustarElementosJanela();
-            } catch (SQLException ex) {
-                Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        telaListagemClientes.setOnShown(evento -> {
+           // try {
+                //cc.ajustarElementosJanela();
+           // } catch (SQLException ex) {
+                //Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+           // }
         });
 
         Scene scene = new Scene(root);
         
-        telaListagemUsuarios.setTitle("Listagem de Usuários");
-        telaListagemUsuarios.setScene(scene);
-        telaListagemUsuarios.show();
+        telaListagemClientes.setTitle("Cadastro e Listagem de Clientes");
+        telaListagemClientes.setScene(scene);
+        telaListagemClientes.show();
     }
 
     @FXML
