@@ -1,5 +1,6 @@
 controller\CadastroUsuariosController.class
 controller\PrincipalController.class
+controller\ProdutoController.class
 model\Usuario.class
 principal\App.class
 dal\ConexaoBD.class
@@ -7,8 +8,10 @@ model\GenericDAO.class
 controller\ClienteController.class
 controller\LoginController.class
 model\LoginDAO.class
+model\ProdutoDAO.class
 module-info.class
 model\Cliente.class
+model\Produto.class
 controller\ListagemUsuariosController.class
 model\UsuarioDAO.class
 util\AlertaUtil.class

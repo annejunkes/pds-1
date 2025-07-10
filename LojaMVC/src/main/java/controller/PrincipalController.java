@@ -39,6 +39,9 @@ public class PrincipalController {
 
     @FXML
     private MenuItem menuCadastroUsuarios;
+    
+    @FXML
+    private MenuItem menuCadastroProdutos;
 
     @FXML
     private MenuItem menuFechar;
@@ -105,6 +108,35 @@ public class PrincipalController {
         telaListagemClientes.setScene(scene);
         telaListagemClientes.show();
     }
+    
+    @FXML
+    void menuCadastroProdutosClick(ActionEvent event) throws IOException {
+        URL url = new File("src/main/java/view/ProdutoView.fxml").toURI().toURL();
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+        
+        Stage telaListagemProdutos = new Stage();
+        
+        ProdutoController pc = loader.getController();
+
+        pc.setStage(telaListagemProdutos);
+
+        telaListagemProdutos.setOnShown(evento -> {
+           // try {
+                //cc.ajustarElementosJanela();
+           // } catch (SQLException ex) {
+                //Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+           // }
+        });
+
+        Scene scene = new Scene(root);
+        
+        telaListagemProdutos.setTitle("Cadastro e Listagem de Produtos");
+        telaListagemProdutos.setScene(scene);
+        telaListagemProdutos.show();
+    }
+    
+    
 
     @FXML
     void menuFecharClick(ActionEvent event) {
