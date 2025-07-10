@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ClienteDAO {
@@ -30,13 +32,16 @@ public class ClienteDAO {
     }
     
     
-    public void listarClientes() throws SQLException{
+    public List<Cliente> listarClientes() throws SQLException{
+        
+        List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM cliente";
         
         try (Connection conn = ConexaoBD.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery()){
             
+            int cont=0;
             while(rs.next()){
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
@@ -44,17 +49,17 @@ public class ClienteDAO {
                 String endereco = rs.getString("endereco");
                 Date dataNascimento = rs.getDate("data_nascimento");
                 
-                System.out.println("ID: " + id + 
-                        "\nNome: " + nome + 
-                        "\nTelefone: " + telefone +
-                        "\nEndereco: " + endereco +
-                        "\nData nascimento: " + dataNascimento);
+                Cliente cliente = new Cliente(id, nome, telefone, endereco, dataNascimento);
+                clientes.add(cliente);
+                cont++;
                 
             }
             
         }catch(SQLException e){
             System.out.println("Erro ao listar clientes: " + e.getMessage());
         }
+        
+        return clientes;
         
         
     }

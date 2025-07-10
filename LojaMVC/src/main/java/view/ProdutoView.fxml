@@ -19,13 +19,13 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClienteController">
+<AnchorPane id="AnchorPane" prefHeight="548.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProdutoController">
    <children>
       <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <Pane prefHeight="60.0" prefWidth="550.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" layoutY="22.0" prefHeight="20.0" prefWidth="550.0" text="Cadastro e listagem de clientes">
+                  <Label alignment="CENTER" layoutY="22.0" prefHeight="20.0" prefWidth="550.0" text="Cadastro e listagem de produtos">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -46,7 +46,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvarClick" prefHeight="30.0" prefWidth="183.0" text="Salvar Clientes" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvarClick" prefHeight="30.0" prefWidth="183.0" text="Salvar novo Produto" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -61,27 +61,26 @@
                <children>
                   <GridPane hgap="50.0" layoutX="66.0" layoutY="45.0" prefHeight="135.0" prefWidth="419.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="126.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="243.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="154.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="215.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="TOP_RIGHT" prefWidth="250.0" text="Nome">
+                        <Label alignment="TOP_RIGHT" prefHeight="20.0" prefWidth="168.0" text="Descrição do produto">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="TOP_RIGHT" prefWidth="250.0" text="Telefone" GridPane.rowIndex="1">
+                        <Label alignment="TOP_RIGHT" prefWidth="250.0" text="Valor" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtNome" GridPane.columnIndex="1">
+                        <TextField fx:id="txtDescricao" GridPane.columnIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -89,27 +88,17 @@
                               <Insets />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="txtTelefone" maxWidth="280.0" prefHeight="30.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="txtValor" maxWidth="280.0" prefHeight="30.0" prefWidth="280.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Label alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="250.0" text="Data de nascimento" GridPane.rowIndex="3">
+                        <Label alignment="TOP_RIGHT" layoutX="10.0" layoutY="44.0" prefWidth="250.0" text="Quantidade em estoque" GridPane.rowIndex="2">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="TOP_RIGHT" layoutX="10.0" layoutY="44.0" prefWidth="250.0" text="Endereco" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtDataNascimento" promptText="(formato: yyyy-mm-dd)" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="txtEndereco" maxWidth="281.0" prefHeight="30.0" prefWidth="281.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="txtQtdEstoque" maxWidth="281.0" prefHeight="30.0" prefWidth="281.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="14.0" />
                            </font>

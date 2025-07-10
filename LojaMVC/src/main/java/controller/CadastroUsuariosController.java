@@ -88,10 +88,10 @@ public class CadastroUsuariosController {
                 "Você deve preencher todos os campos!");
                 
             }
-            if(verifTelefone(txtTelefone.toString()) == false){
-                AlertaUtil.mostrarErro("Telefone incompativel",
-                txtTelefone.getText());
-            }
+            //if(verifTelefone(txtTelefone.toString()) == false){
+                //AlertaUtil.mostrarErro("Telefone incompativel",
+                //txtTelefone.getText());
+           // }
             else{
             incluir(txtNome.getText(),
             txtTelefone.getText(), txtLogin.getText(),
